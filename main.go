@@ -33,7 +33,7 @@ type Item struct {
 
 const numberOfItemsToDisplay int = 30
 const apiURL string = "https://hacker-news.firebaseio.com/v0/"
-const refreshInterval = (1 * time.Hour)
+const refreshInterval = (1 * time.Day)
 
 var (
 	env  = os.Getenv("ENV")
@@ -148,7 +148,7 @@ func (s *Store) fetchItems(ids []int) {
 			continue
 		}
 
-                if (now - item.Time) < 86400 {
+                if (now - item.Time) < (time.Day) {
                           continue
                 }
 		items = append(items, *item)
