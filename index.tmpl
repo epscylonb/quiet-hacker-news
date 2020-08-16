@@ -81,7 +81,7 @@
 
     <ol>
       {{ range $key, $value := . }}
-        <li><a href="{{ $value.URL }}">{{ $value.Title }}</a> <span>({{ $value.Host }})</span></li>
+        <li><a  target=”_blank” href="{{ $value.URL }}">{{ $value.Title }}</a> <span>({{ $value.Host }})</span></li>
       {{ end }}
     </ol>
 
