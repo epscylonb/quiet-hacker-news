@@ -148,7 +148,7 @@ func (s *Store) fetchItems(ids []int) {
 			continue
 		}
 
-                if (now - item.Time) < 7200 {
+                if (now - item.Time) < 86400 {
                           continue
                 }
 		items = append(items, *item)
