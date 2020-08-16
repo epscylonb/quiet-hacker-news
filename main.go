@@ -27,6 +27,7 @@ type Item struct {
 	Title string `json:"title"`
 	Text  string `json:"text"`
 	URL   string `json:"url"`
+        Time  int32  `json:"time"`
 	Host  string `json:"-"`
 }
 
@@ -135,6 +136,7 @@ func (s *Store) fetchIDs() {
 func (s *Store) fetchItems(ids []int) {
 	var items []Item // Temporary storage to switch out with real storage
 	var numItems int
+        var now = int32(time.Now().Unix())
 
 	for _, id := range ids {
 		itemURL := fmt.Sprintf("%sitem/%d.json", apiURL, id)
@@ -146,6 +148,9 @@ func (s *Store) fetchItems(ids []int) {
 			continue
 		}
 
+                if (now - item.Time) < 7200 {
+                          continue
+                }
 		items = append(items, *item)
 
 		numItems++
