@@ -33,7 +33,7 @@ type Item struct {
 
 const numberOfItemsToDisplay int = 30
 const apiURL string = "https://hacker-news.firebaseio.com/v0/"
-const refreshInterval = (1 * time.Day)
+const refreshInterval = (24 * time.Hour)
 
 var (
 	env  = os.Getenv("ENV")
