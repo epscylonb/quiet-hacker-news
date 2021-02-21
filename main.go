@@ -12,6 +12,7 @@ import (
 	"regexp"
 	"sync"
 	"time"
+	"sort"
 )
 
 // Store ...
@@ -138,7 +139,9 @@ func (s *Store) fetchItems(ids []int) {
 	var numItems int
         var now = int32(time.Now().Unix())
 
-	for _, id := range ids {
+	for i := range ids {
+		var idx = len(ids)-1-i
+		id = ids[idx]
 		itemURL := fmt.Sprintf("%sitem/%d.json", apiURL, id)
 
 		item, err := fetchItem(itemURL)
@@ -148,9 +151,9 @@ func (s *Store) fetchItems(ids []int) {
 			continue
 		}
 
-                if (now - item.Time) < (86400) {
-                          continue
-                }
+                //if (now - item.Time) < (86400) {
+                //          continue
+                //}
 		items = append(items, *item)
 
 		numItems++
