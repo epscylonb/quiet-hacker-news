@@ -136,7 +136,7 @@ func (s *Store) fetchIDs() {
 func (s *Store) fetchItems(ids []int) {
 	var items []Item // Temporary storage to switch out with real storage
 	var numItems int
-        var now = int32(time.Now().Unix())
+        //var now = int32(time.Now().Unix())
 
 	for i := range ids {
 		var idx = len(ids)-1-i
